@@ -161,5 +161,8 @@ docker-compose up --build
 docker-compose up -d --build
 ```
 
+#### App will be accessible at http://your-public-ip:8000
+ (or your server IP).
+
 
 
