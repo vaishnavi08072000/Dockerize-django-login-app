@@ -124,7 +124,7 @@ docker build -t django-login-app .
 docker run -p 8000:8000 django-login-app
 ```
 
-#### App will be accessible at http://localhost:8000
+#### App will be accessible at http://<your-public-ip>:8000
  (or your server IP).
 
 ### Optional: Docker Compose (with PostgreSQL)
