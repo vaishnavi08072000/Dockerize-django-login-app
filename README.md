@@ -1,4 +1,4 @@
-# Simple Django Login and Registration
+# Dockerizing Simple Django Login and Registration
 
 [![CI pipeline](https://github.com/egorsmkv/simple-django-login-and-register/actions/workflows/ci.yml/badge.svg)](https://github.com/egorsmkv/simple-django-login-and-register/actions/workflows/ci.yml)
 
@@ -13,6 +13,10 @@ An example of Django project with basic user functionality.
 | Password reset | Set new password | Password change |
 | ---------------|------------------|-----------------|
 | <img src="./screenshots/password_reset.png" width="200"> | <img src="./screenshots/set_new_password.png" width="200"> | <img src="./screenshots/password_change.png" width="200"> |
+
+| Password reset | Set new password |
+| ---------------|------------------|
+| <img src="./screenshots/password_reset.png" width="200"> | <img src="./screenshots/set_new_password.png" width="200"> | 
 
 ## Functionality
 
@@ -95,6 +99,84 @@ Collect static files:
 ```bash
 python source/manage.py collectstatic
 ```
+
+
+### Dockerization
+
+### Dockerfile
+
+Create a Dockerfile in your project root:
+
+```bash
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+```
+
+### .dockerignore
+
+```bash
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+venv/
+```
+
+### Build the Docker image:
+
+```bash
+docker build -t django-login-app .
+```
+
+### Run the Docker container:
+
+```bash
+docker run -p 8000:8000 django-login-app
+```
+
+### App will be accessible at http://localhost:8000
+ (or your server IP).
+
+### Optional: Docker Compose (with PostgreSQL)
+
+```bash
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+
+```
+### Start with:
+
+```bash
+docker-compose up --build
+```
+
 
 ### Development
 
