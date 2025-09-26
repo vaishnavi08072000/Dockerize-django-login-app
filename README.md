@@ -175,6 +175,8 @@ services:
 
 ```bash
 docker-compose up --build
+       OR
+docker-compose up -d --build
 ```
 
 
