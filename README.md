@@ -14,9 +14,9 @@ An example of Django project with basic user functionality.
 | ---------------|------------------|-----------------|
 | <img src="./screenshots/password_reset.png" width="200"> | <img src="./screenshots/set_new_password.png" width="200"> | <img src="./screenshots/password_change.png" width="200"> |
 
-| Password reset | Set new password |
+| Running in Docker | Accessing app in browser |
 | ---------------|------------------|
-| <img src="./screenshots/password_reset.png" width="200"> | <img src="./screenshots/set_new_password.png" width="200"> | 
+| <img src="./screenshots/Running-in-Docker.png" width="200"> | <img src="./screenshots/Accessing-app-in-browser.png" width="200"> | 
 
 ## Functionality
 
