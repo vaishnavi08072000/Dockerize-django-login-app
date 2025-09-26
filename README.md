@@ -19,7 +19,42 @@ An example of Django project with basic user functionality.
 | ---------------|------------------|
 | <img src="./screenshots/Running-in-Docker.png" width="200"> | <img src="./screenshots/Accessing-app-in-browser.png" width="200"> | 
 
-## Functionality
+## Creating EC2 instances 
+ # Installing OS:** Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1011-aws x86_64)
+
+ ## Packages Installed 
+ 1.Git
+ 
+   ```bash
+   sudo apt update
+   sudo apt install git
+   ```
+
+ 2.Docker
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install ca-certificates curl
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release &&               echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  ```
+
+ 3.Apache
+ 
+  ```bash
+  sudo apt update
+  sudo apt install apache2
+  systemctl status apache2
+  ```
+ 
+
+
+
+### Functionality
 
 - Log in
     - via username & password
@@ -41,7 +76,7 @@ If you need dynamic URLs with the language code, check out https://github.com/eg
 
 ## Installing
 
-### Clone the project
+#### Clone the project
 
 ```bash
 git clone https://github.com/vaishnavi08072000/Dockerize-django-login-app.git
@@ -50,7 +85,7 @@ cd Dockerize-django-login-app
 
 ### Activate virtualenv
 
-#### Create a virtualenv using `uv`
+##### Create a virtualenv using `uv`
 
 ```bash
 uv venv --python 3.13
@@ -58,7 +93,7 @@ uv venv --python 3.13
 source .venv/bin/activate
 ```
 
-#### Install dependencies
+###### Install dependencies
 
 ```bash
 # uv sync --upgrade --extra dev
@@ -85,7 +120,7 @@ python source/manage.py migrate
 
 ### Running
 
-#### On development server
+####### On development server
 
 Start the local web server:
 
@@ -102,9 +137,9 @@ python source/manage.py collectstatic
 ```
 
 
-### Dockerization
+##### Dockerization
 
-### Dockerfile
+###### Dockerfile
 
 Create a Dockerfile in your project root:
 
@@ -118,7 +153,7 @@ EXPOSE 8000
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 ```
 
-### .dockerignore
+##### .dockerignore
 
 ```bash
 __pycache__
@@ -131,19 +166,19 @@ __pycache__
 venv/
 ```
 
-### Build the Docker image:
+##### Build the Docker image:
 
 ```bash
 docker build -t django-login-app .
 ```
 
-### Run the Docker container:
+##### Run the Docker container:
 
 ```bash
 docker run -p 8000:8000 django-login-app
 ```
 
-### App will be accessible at http://localhost:8000
+###### App will be accessible at http://localhost:8000
  (or your server IP).
 
 ### Optional: Docker Compose (with PostgreSQL)
@@ -172,7 +207,7 @@ services:
       - "5432:5432"
 
 ```
-### Start with:
+##### Start with:
 
 ```bash
 docker-compose up --build
@@ -181,7 +216,7 @@ docker-compose up -d --build
 ```
 
 
-### Development
+##### Development
 
 #### Check & format code
 
