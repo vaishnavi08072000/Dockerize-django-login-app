@@ -23,14 +23,14 @@ An example of Django project with basic user functionality.
  # Installing OS:** Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1011-aws x86_64)
 
  ## Packages Installed 
- 1.Git
+ 1. Git
  
    ```bash
    sudo apt update
    sudo apt install git
    ```
 
- 2.Docker
+ 2. Docker
 
   ```bash
   sudo apt-get update
@@ -43,7 +43,7 @@ An example of Django project with basic user functionality.
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   ```
 
- 3.Apache
+ 3. Apache
  
   ```bash
   sudo apt update
