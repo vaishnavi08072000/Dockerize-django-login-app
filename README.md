@@ -83,63 +83,9 @@ git clone https://github.com/vaishnavi08072000/Dockerize-django-login-app.git
 cd Dockerize-django-login-app
 ```
 
-### Activate virtualenv
+### Dockerization
 
-##### Create a virtualenv using `uv`
-
-```bash
-uv venv --python 3.13
-
-source .venv/bin/activate
-```
-
-###### Install dependencies
-
-```bash
-# uv sync --upgrade --extra dev
-
-uv sync --upgrade
-
-# Or using requirements files:
-
-uv pip install -r requirements.txt
-uv pip install -r requirements-dev.txt # in development mode
-```
-
-### Configure the settings (connection to the database, connection to an SMTP server, and other options)
-
-1. Edit `source/app/conf/development/settings.py` if you want to develop the project.
-
-2. Edit `source/app/conf/production/settings.py` if you want to run the project in production.
-
-### Apply migrations
-
-```bash
-python source/manage.py migrate
-```
-
-### Running
-
-###### On development server
-
-Start the local web server:
-
-```bash
-python source/manage.py runserver
-```
-
-#### On production server
-
-Collect static files:
-
-```bash
-python source/manage.py collectstatic
-```
-
-
-##### Dockerization
-
-###### Dockerfile
+#### Dockerfile
 
 Create a Dockerfile in your project root:
 
@@ -166,19 +112,19 @@ __pycache__
 venv/
 ```
 
-##### Build the Docker image:
+### Build the Docker image:
 
 ```bash
 docker build -t django-login-app .
 ```
 
-##### Run the Docker container:
+### Run the Docker container:
 
 ```bash
 docker run -p 8000:8000 django-login-app
 ```
 
-###### App will be accessible at http://localhost:8000
+#### App will be accessible at http://localhost:8000
  (or your server IP).
 
 ### Optional: Docker Compose (with PostgreSQL)
@@ -207,7 +153,7 @@ services:
       - "5432:5432"
 
 ```
-##### Start with:
+#### Start with:
 
 ```bash
 docker-compose up --build
@@ -216,12 +162,4 @@ docker-compose up -d --build
 ```
 
 
-##### Development
 
-#### Check & format code
-
-This command formats the code:
-
-```bash
-just fmt
-```
