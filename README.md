@@ -120,7 +120,7 @@ python source/manage.py migrate
 
 ### Running
 
-####### On development server
+###### On development server
 
 Start the local web server:
 
